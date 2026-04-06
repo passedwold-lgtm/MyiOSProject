@@ -28,9 +28,11 @@ jobs:
         echo "THEOS=$HOME/theos" >> $GITHUB_ENV
         echo "$HOME/theos/bin:$PATH" >> $GITHUB_PATH
 
-    - name: Setup iOS SDK
+         - name: Setup iOS SDK
       run: |
+        rm -rf $HOME/theos/sdks
         git clone https://github.com/theos/sdks.git $HOME/theos/sdks
+      
 
     - name: Build Project for iOS 26
       run: |
