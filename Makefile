@@ -30,9 +30,16 @@ FF_FILES = ImGuiDrawView.mm \
 
 FF_FRAMEWORKS = UIKit Foundation Security QuartzCore CoreGraphics CoreText AVFoundation Accelerate GLKit SystemConfiguration GameController Metal MetalKit
 
+# 🔥 FIX INCLUDE PATH (สำคัญมาก)
+FF_CFLAGS += -I$(THEOS_PROJECT_DIR) \
+             -I$(THEOS_PROJECT_DIR)/Utils \
+             -I$(THEOS_PROJECT_DIR)/imgui \
+             -I$(THEOS_PROJECT_DIR)/Security
 
-FF_CFLAGS += -I$(THEOS_PROJECT_DIR) -I$(THEOS_PROJECT_DIR)/Utils
-FF_CCFLAGS += -I$(THEOS_PROJECT_DIR) -I$(THEOS_PROJECT_DIR)/Utils
+FF_CCFLAGS += -I$(THEOS_PROJECT_DIR) \
+              -I$(THEOS_PROJECT_DIR)/Utils \
+              -I$(THEOS_PROJECT_DIR)/imgui \
+              -I$(THEOS_PROJECT_DIR)/Security
 
 # เดิม
 FF_CCFLAGS += -std=c++11 -fno-rtti -fno-exceptions -DNDEBUG -Wall -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-value -Wno-unused-function -fvisibility=hidden
