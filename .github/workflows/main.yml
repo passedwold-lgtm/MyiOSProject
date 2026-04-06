@@ -39,7 +39,7 @@ jobs:
         export ARCHS=arm64
         export TARGET=iphone:clang:latest:26
         cd $GITHUB_WORKSPACE
-        make package FINALPACKAGE=1
+        make  FINALPACKAGE=1
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
