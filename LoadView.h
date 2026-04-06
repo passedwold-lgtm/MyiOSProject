@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import "../Utils/MethodObfuscation.h"
+#import "MethodObfuscation.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
