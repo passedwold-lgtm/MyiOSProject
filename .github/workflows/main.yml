@@ -1,18 +1,22 @@
-name: C/C++ CI
+name: Build iOS Tweak
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v4
-    
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
     - name: Install Dependencies
       run: |
         brew install make
@@ -28,17 +32,18 @@ jobs:
       run: |
         git clone https://github.com/theos/sdks.git $HOME/theos/sdks
 
-    - name: Build
+    - name: Build Project for iOS 26
       run: |
         export THEOS=$HOME/theos
         export PATH=$THEOS/bin:$PATH
         export ARCHS=arm64
         export TARGET=iphone:clang:latest:26
+        cd $GITHUB_WORKSPACE
         make package FINALPACKAGE=1
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
-        name: iOS-Tweak-Package
+        name: iOS-Tweak-Package-iOS26
         path: packages/*.deb
         if-no-files-found: warn
