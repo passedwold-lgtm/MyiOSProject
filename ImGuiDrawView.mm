@@ -1,5 +1,5 @@
 #include "Includes.h"
-#import "LoadView/DTTJailbreakDetection.h"
+#import "DTTJailbreakDetection.h"
 #import "imgui/Il2cpp.h"
 #import "Utils/Macros.h"
 #import "Utils/hack/Function.h"
@@ -14,7 +14,7 @@
 #include "Other/iconcpp.h"
 ImFont *_espFont;
 #import "Esp.h"
-#include "Other/AimKill.cpp"
+#include "AimKill.cpp"
 #include "hook/hook.h"
 
 #define UIColorFromHex(hexColor) [UIColor colorWithRed:((float)((hexColor & 0xFF0000) >> 16))/255.0 green:((float)((hexColor & 0xFF00) >> 8))/255.0 blue:((float)(hexColor & 0xFF))/255.0 alpha:1.0]
