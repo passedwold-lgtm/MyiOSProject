@@ -34,7 +34,7 @@ jobs:
         export PATH=$THEOS/bin:$PATH
         export ARCHS=arm64
         export TARGET=iphone:clang:latest:26
-        make package FINALPACKAGE=1
+        make  FINALPACKAGE=1
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
