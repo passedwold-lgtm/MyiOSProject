@@ -30,8 +30,13 @@ FF_FILES = ImGuiDrawView.mm \
 
 FF_FRAMEWORKS = UIKit Foundation Security QuartzCore CoreGraphics CoreText AVFoundation Accelerate GLKit SystemConfiguration GameController Metal MetalKit
 
-FF_CCFLAGS = -std=c++11 -fno-rtti -fno-exceptions -DNDEBUG -Wall -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-value -Wno-unused-function -fvisibility=hidden
-FF_CFLAGS = -fobjc-arc -Wall -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-value -Wno-unused-function -fvisibility=hidden
+
+FF_CFLAGS += -I$(THEOS_PROJECT_DIR) -I$(THEOS_PROJECT_DIR)/Utils
+FF_CCFLAGS += -I$(THEOS_PROJECT_DIR) -I$(THEOS_PROJECT_DIR)/Utils
+
+# เดิม
+FF_CCFLAGS += -std=c++11 -fno-rtti -fno-exceptions -DNDEBUG -Wall -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-value -Wno-unused-function -fvisibility=hidden
+FF_CFLAGS += -fobjc-arc -Wall -Wno-deprecated-declarations -Wno-unused-variable -Wno-unused-value -Wno-unused-function -fvisibility=hidden
 
 ifeq ($(IGNORE_WARNINGS),1)
   FF_CFLAGS += -w
