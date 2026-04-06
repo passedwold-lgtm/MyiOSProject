@@ -25,8 +25,8 @@ jobs:
     - name: Setup Theos
       run: |
         git clone --recursive https://github.com/theos/theos.git $HOME/theos
-        cd $HOME/theos
-        bash ./install
+        echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+        echo "$HOME/theos/bin:$PATH" >> $GITHUB_PATH
 
     - name: Setup iOS SDK
       run: |
@@ -35,11 +35,10 @@ jobs:
     - name: Build Project for iOS 26
       run: |
         export THEOS=$HOME/theos
-        export PATH=$THEOS/bin:$PATH
         export ARCHS=arm64
         export TARGET=iphone:clang:latest:26
         cd $GITHUB_WORKSPACE
-        make  FINALPACKAGE=1
+        make package FINALPACKAGE=1
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v3
